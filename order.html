@@ -1,162 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Find Jems - Order Form</title>
-<style>
-  body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #ffeef5;
-    color: #333;
-    margin: 0;
-    padding: 0;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Find Jems - Custom Order</title>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background-color: #fff0f5;
+      color: #333;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
 
-  .order-section {
-    max-width: 400px;
-    background: white;
-    margin: 40px auto;
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  }
+    h2 {
+      color: #d63384;
+    }
 
-  h2 {
-    color: #ff4da6;
-    text-align: center;
-  }
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+      background: white;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
 
-  p {
-    text-align: center;
-    font-size: 14px;
-    color: #555;
-  }
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-family: "Poppins", sans-serif;
+    }
 
-  label {
-    display: block;
-    font-weight: 600;
-    margin-top: 15px;
-    color: #333;
-  }
+    button {
+      background-color: #d63384;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 16px;
+    }
 
-  input, textarea, select {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    border: 2px solid #ffcce0;
-    border-radius: 10px;
-    font-size: 14px;
-  }
+    button:hover {
+      background-color: #b52d6f;
+    }
 
-  textarea {
-    resize: vertical;
-  }
+    #qrSection {
+      display: none;
+      text-align: center;
+      margin-top: 20px;
+    }
 
-  button {
-    width: 100%;
-    margin-top: 20px;
-    background: #ff4da6;
-    color: white;
-    border: none;
-    padding: 12px;
-    border-radius: 30px;
-    font-size: 16px;
-    cursor: pointer;
-  }
+    #qrSection img {
+      width: 250px;
+      border-radius: 10px;
+    }
 
-  button:hover {
-    background: #ff66b3;
-  }
-
-  .qr-section {
-    display: none;
-    text-align: center;
-    margin-top: 15px;
-  }
-
-  .qr-section img {
-    width: 200px;
-    border: 3px solid #ffcce0;
-    border-radius: 15px;
-  }
-</style>
+    small {
+      color: #777;
+      display: block;
+      margin-top: 10px;
+    }
+  </style>
 </head>
 <body>
 
-<section class="order-section">
-  <h2>Place Your Custom Order</h2>
-  <p>Fill in the details below to complete your personalized jewellery order. We’ll confirm it via WhatsApp 💬</p>
+  <section class="order-section">
+    <h2>Thankyou For Shopping With Us</h2>
+    <p>Fill in the details below to complete your Order ✨</p>
 
-  <form id="whatsappOrderForm">
-    <label for="name">Full Name</label>
-    <input type="text" id="name" placeholder="Enter your full name" required>
+    <form id="whatsappOrderForm">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" placeholder="Enter your full name" required>
 
-    <label for="email">Email Address</label>
-    <input type="email" id="email" placeholder="Enter your email" required>
+      <label for="email">Email Address</label>
+      <input type="email" id="email" placeholder="Enter your email address" required>
 
-    <label for="phone">Phone Number</label>
-    <input type="tel" id="phone" placeholder="Enter your phone number" required>
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" placeholder="Enter your phone number" required>
 
-    <label for="address">Delivery Address</label>
-    <textarea id="address" placeholder="Enter your full address" required></textarea>
+      <label for="address">Delivery Address</label>
+      <textarea id="address" placeholder="Enter your full delivery address" required></textarea>
 
-    <label for="design">Design Details</label>
-    <textarea id="design" placeholder="Describe your jewellery design..." required></textarea>
+      <label for="design">If Any Question Ask?</label>
+      <textarea id="design" placeholder="Describe your design or customization details" required></textarea>
 
-    <label for="payment">Payment Method</label>
-    <select id="payment" required onchange="toggleQR()">
-      <option value="">Select a payment method</option>
-      <option value="Online Payment">Online Payment</option>
-      <option value="Cash on Delivery">Cash on Delivery</option>
-    </select>
+      <label for="imageUpload">Upload Your order Image</label>
+      <input type="file" id="imageUpload" accept="image/*">
 
-    <div class="qr-section" id="qrSection">
-      <p>📸 Scan the QR code below to make your payment:</p>
-      <img src="qr-code.jpg" alt="Payment QR Code">
-      <p><small>After payment, click “Submit Order” below.</small></p>
-    </div>
+      <label for="payment">Payment Method:</label>
+      <select id="payment" name="payment" onchange="toggleQR()" required>
+        <option value="">-- Select Payment Method --</option>
+        <option value="online">Online Payment</option>
+        <option value="cod">Cash on Delivery</option>
+      </select>
 
-    <button type="button" onclick="sendToWhatsApp()">Submit Order</button>
-  </form>
-</section>
+      <div id="qrSection">
+        <h3 style="color:#d63384;">💖 Scan to Pay 💖</h3>
+        <img src="your-qr-image.jpg" alt="Find Jems UPI QR Code">
+        <p style="margin-top:10px; color:#555;">UPI ID: <b>moalemlalemtur4-2@okicici</b></p>
+        <small>After payment, take a screenshot and attach it in WhatsApp 📸</small>
+      </div>
 
-<script>
-function toggleQR() {
-  const payment = document.getElementById("payment").value;
-  const qrSection = document.getElementById("qrSection");
-  qrSection.style.display = (payment === "Online Payment") ? "block" : "none";
-}
+      <button type="button" onclick="sendToWhatsApp()">Submit via WhatsApp</button>
+    </form>
+  </section>
 
-function sendToWhatsApp() {
-  const phone1 = "+919233587954";  // your main WhatsApp
-  const phone2 = "+918119020447";  // optional second WhatsApp
+  <script>
+    function toggleQR() {
+      const payment = document.getElementById("payment").value;
+      const qrSection = document.getElementById("qrSection");
+      qrSection.style.display = (payment === "online") ? "block" : "none";
+    }
 
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const phone = document.getElementById("phone").value;
-  const address = document.getElementById("address").value;
-  const design = document.getElementById("design").value;
-  const payment = document.getElementById("payment").value;
+    function sendToWhatsApp() {
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const address = document.getElementById("address").value.trim();
+      const design = document.getElementById("design").value.trim();
+      const payment = document.getElementById("payment").value;
+      const imageUpload = document.getElementById("imageUpload").value;
 
-  const text = 
-`💎 New Jewellery Order 💎
+      if (!name || !email || !phone || !address || !design || !payment) {
+        alert("Please fill in all required fields before submitting 💖");
+        return;
+      }
 
-👤 Name: ${name}
-📧 Email: ${email}
-📞 Phone: ${phone}
-🏠 Address: ${address}
+      const encodedMessage = encodeURIComponent(
+        `🌸 *New  Order from Find Jems My beauty Larlo* 🌸\n\n` +
+        `👩 Name: ${name}\n` +
+        `📧 Email: ${email}\n` +
+        `📞 Phone: ${phone}\n` +
+        `🏠 Address: ${address}\n` +
+        `🎨 Design Details: ${design}\n` +
+        `💰 Payment Method: ${payment === "online" ? "Online Payment (Paid via UPI)" : "Cash on Delivery"}\n` +
+        `${imageUpload ? "🖼️ Image uploaded: Yes\n" : ""}` +
+        `\n✨ Please confirm my order.`
+      );
 
-💬 Design Details:
-${design}
+      const whatsappNumber = "919233587954"; // Replace with your WhatsApp number (with country code, no +)
+      const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
 
-💰 Payment Method: ${payment}`;
-
-  const encodedText = encodeURIComponent(text);
-  window.open(`https://wa.me/${phone1}?text=${encodedText}`, "_blank");
-  window.open(`https://wa.me/${phone2}?text=${encodedText}`, "_blank");
-}
-</script>
+      window.open(whatsappURL, "_blank");
+    }
+  </script>
 
 </body>
 </html>
