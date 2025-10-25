@@ -103,18 +103,18 @@
 
       <div id="qrSection">
         <h3 style="color:#d63384;">💖 Scan to Pay 💖</h3>
-        <<img src="findjems-payment-qr.jpg" alt="Find Jems UPI QR Code">
+        <img src="your-qr-image.jpg" alt="Find Jems UPI QR Code">
         <p style="margin-top:10px; color:#555;">UPI ID: <b>moalemlalemtur4-2@okicici</b></p>
         <small>After payment, take a screenshot and attach it in WhatsApp 📸</small>
       </div>
+
       <button type="button" onclick="sendToWhatsApp()">Submit via WhatsApp</button>
     </form>
   </section>
 
   <script>
-     <input type="file" id="imageUpload" accept="image/*">
-     <img id="previewImage" style="display:none; margin-top:10px; max-width:200px; border-radius:10px;">
-       const payment = document.getElementById("payment").value;
+    function toggleQR() {
+      const payment = document.getElementById("payment").value;
       const qrSection = document.getElementById("qrSection");
       qrSection.style.display = (payment === "online") ? "block" : "none";
     }
@@ -134,7 +134,7 @@
       }
 
       const encodedMessage = encodeURIComponent(
-        `🌸 *New Order from Find Jems.My beauty Larlo got new order Yay!* 🌸\n\n` +
+        `🌸 *New  Order from Find Jems My beauty Larlo* 🌸\n\n` +
         `👩 Name: ${name}\n` +
         `📧 Email: ${email}\n` +
         `📞 Phone: ${phone}\n` +
