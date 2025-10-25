@@ -123,112 +123,34 @@
       const name = document.getElementById("name").value.trim();
       const email = document.getElementById("email").value.trim();
       const phone = document.getElementById("phone").value.trim();
-    <script>
-let qrTimeout;
+       const address = document.getElementById("address").value.trim();
+      const design = document.getElementById("design").value.trim();
+      const payment = document.getElementById("payment").value;
+      const imageUpload = document.getElementById("imageUpload").value;
 
-function toggleQR() {
-  const payment = document.getElementById("payment").value;
-  const qrSection = document.getElementById("qrSection");
+      if (!name || !email || !phone || !address || !design || !payment) {
+        alert("Please fill in all required fields before submitting 💖");
+        return;
+      }
 
-  if (payment === "online") {
-    qrSection.style.display = "block";
-    qrSection.style.opacity = "1";
+      const encodedMessage = encodeURIComponent(
+        `🌸 *New  Order from Find Jems My beautiful Larlo gonna make money Yay!* 🌸\n\n` +
+        `👩 Name: ${name}\n` +
+        `📧 Email: ${email}\n` +
+        `📞 Phone: ${phone}\n` +
+        `🏠 Address: ${address}\n` +
+        `🎨 Design Details: ${design}\n` +
+        `💰 Payment Method: ${payment === "online" ? "Online Payment (Paid via UPI)" : "Cash on Delivery"}\n` +
+        `${imageUpload ? "🖼️ Image uploaded: Yes\n" : ""}` +
+        `\n✨ Please confirm my order.`
+      );
 
-    clearTimeout(qrTimeout);
+      const whatsappNumber = "919233587954"; // Replace with your WhatsApp number (with country code, no +)
+      const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
 
-    qrTimeout = setTimeout(() => {
-      qrSection.style.transition = "opacity 1s";
-      qrSection.style.opacity = "0";
-      setTimeout(() => {
-        qrSection.style.display = "none";
-        alert("⏰ QR code closed — please select payment again if you need more time 💖");
-      }, 1000);
-    }, 60000);
-  } else {
-    qrSection.style.display = "none";
-    clearTimeout(qrTimeout);
-  }
-}
-
-// ---------- IMAGE UPLOAD VALIDATION + PROGRESS ----------
-document.getElementById("imageUpload").addEventListener("change", function (e) {
-  const file = e.target.files[0];
-  const maxSize = 500 * 1024 * 1024; // 500 MB
-  const progressContainer = document.createElement("div");
-  progressContainer.style.marginTop = "10px";
-  progressContainer.style.width = "100%";
-  progressContainer.style.textAlign = "center";
-
-  const progressBar = document.createElement("div");
-  progressBar.style.height = "8px";
-  progressBar.style.width = "0%";
-  progressBar.style.background = "#ffb6c1";
-  progressBar.style.borderRadius = "5px";
-  progressBar.style.transition = "width 0.5s";
-
-  const tick = document.createElement("span");
-  tick.innerHTML = "✅ Upload successful! You can continue 💕";
-  tick.style.display = "none";
-  tick.style.color = "green";
-  tick.style.fontWeight = "bold";
-
-  progressContainer.appendChild(progressBar);
-  progressContainer.appendChild(tick);
-  e.target.parentNode.appendChild(progressContainer);
-
-  if (file.size > maxSize) {
-    alert("⚠️ File is too large! Please upload an image smaller than 500 MB.");
-    e.target.value = "";
-    return;
-  }
-
-  let progress = 0;
-  const simulate = setInterval(() => {
-    progress += 10;
-    progressBar.style.width = progress + "%";
-
-    if (progress >= 100) {
-      clearInterval(simulate);
-      progressBar.style.background = "green";
-      tick.style.display = "block";
+      window.open(whatsappURL, "_blank");
     }
-  }, 200);
-});
+  </script>
 
-// ---------- WHATSAPP VALIDATION ----------
-function sendToWhatsApp() {
-  const name = document.getElementById("name").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const phone = document.getElementById("phone").value.trim();
-  const address = document.getElementById("address").value.trim();
-  const design = document.getElementById("design").value.trim();
-  const payment = document.getElementById("payment").value;
-  const imageUpload = document.getElementById("imageUpload").value;
-
-  if (!name || !email || !phone || !address || !design || !payment || !imageUpload) {
-    alert("⚠️ Please fill in all fields and upload your image before submitting 💖");
-    return;
-  }
-
-  if (payment === "online") {
-    const qrSection = document.getElementById("qrSection");
-    if (qrSection.style.display === "none" || qrSection.style.opacity === "0") {
-      alert("💳 Please complete your payment before sending your order 💕");
-      return;
-    }
-  }
-
-  const encodedMessage = encodeURIComponent(
-    `🌸 *New Order from Find Jems!* 🌸\n\n` +
-    `👤 Name: ${name}\n` +
-    `📧 Email: ${email}\n` +
-    `📞 Phone: ${phone}\n` +
-    `🏠 Address: ${address}\n` +
-    `🎨 Design: ${design}\n` +
-    `💰 Payment Method: ${payment}`
-  );
-
-  const whatsappURL = `https://wa.me/yourwhatsapplinkhere?text=${encodedMessage}`;
-  window.open(whatsappURL, "_blank");
-}
-</script>
+</body>
+</html>
