@@ -1,53 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Find Jems | Order</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Find Jems - Order Form</title>
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffeef5;
+    color: #333;
+    margin: 0;
+    padding: 0;
+  }
+
+  .order-section {
+    max-width: 400px;
+    background: white;
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  }
+
+  h2 {
+    color: #ff4da6;
+    text-align: center;
+  }
+
+  p {
+    text-align: center;
+    font-size: 14px;
+    color: #555;
+  }
+
+  label {
+    display: block;
+    font-weight: 600;
+    margin-top: 15px;
+    color: #333;
+  }
+
+  input, textarea, select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 2px solid #ffcce0;
+    border-radius: 10px;
+    font-size: 14px;
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  button {
+    width: 100%;
+    margin-top: 20px;
+    background: #ff4da6;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background: #ff66b3;
+  }
+
+  .qr-section {
+    display: none;
+    text-align: center;
+    margin-top: 15px;
+  }
+
+  .qr-section img {
+    width: 200px;
+    border: 3px solid #ffcce0;
+    border-radius: 15px;
+  }
+</style>
 </head>
 <body>
-  <header>
-    <h1>Find Jems</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="order.html" class="active">Order</a>
-    </nav>
-  </header>
 
-  <section class="content">
-    <h2>Place Your Custom Order</h2>
-    <p>Fill in the details below to create your personalized jewellery order. We’ll contact you soon to confirm your design!</p>
+<section class="order-section">
+  <h2>Place Your Custom Order</h2>
+  <p>Fill in the details below to complete your personalized jewellery order. We’ll confirm it via WhatsApp 💬</p>
 
-    <form class="order-form" onsubmit="event.preventDefault(); alert('Thank you for your order! We’ll contact you soon.');">
-      <label for="name">Full Name</label>
-      <input type="text" id="name" name="name" placeholder="Enter your name" required>
+  <form id="whatsappOrderForm">
+    <label for="name">Full Name</label>
+    <input type="text" id="name" placeholder="Enter your full name" required>
 
-      <label for="email">Email Address</label>
-      <input type="email" id="email" name="email" placeholder="Enter your email" required>
+    <label for="email">Email Address</label>
+    <input type="email" id="email" placeholder="Enter your email" required>
 
-      <label for="phone">Phone Number</label>
-      <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+    <label for="phone">Phone Number</label>
+    <input type="tel" id="phone" placeholder="Enter your phone number" required>
 
-      <label for="gem">Choose Gemstone</label>
-      <select id="gem" name="gem" required>
-        <option value="">Select a gemstone</option>
-        <option value="morganite">Morganite</option>
-        <option value="pearl">Pearl</option>
-        <option value="tourmaline">Tourmaline</option>
-        <option value="emerald">Emerald</option>
-      </select>
+    <label for="address">Delivery Address</label>
+    <textarea id="address" placeholder="Enter your full address" required></textarea>
 
-      <label for="details">Design Details</label>
-      <textarea id="details" name="details" placeholder="Describe your custom design..." rows="4" required></textarea>
+    <label for="design">Design Details</label>
+    <textarea id="design" placeholder="Describe your jewellery design..." required></textarea>
 
-      <button type="submit" class="btn">Submit Order</button>
-    </form>
-  </section>
+    <label for="payment">Payment Method</label>
+    <select id="payment" required onchange="toggleQR()">
+      <option value="">Select a payment method</option>
+      <option value="Online Payment">Online Payment</option>
+      <option value="Cash on Delivery">Cash on Delivery</option>
+    </select>
 
-  <footer>
-    <p>© 2025 Find Jems. All rights reserved.</p>
-  </footer>
+    <div class="qr-section" id="qrSection">
+      <p>📸 Scan the QR code below to make your payment:</p>
+      <img src="qr-code.jpg" alt="Payment QR Code">
+      <p><small>After payment, click “Submit Order” below.</small></p>
+    </div>
+
+    <button type="button" onclick="sendToWhatsApp()">Submit Order</button>
+  </form>
+</section>
+
+<script>
+function toggleQR() {
+  const payment = document.getElementById("payment").value;
+  const qrSection = document.getElementById("qrSection");
+  qrSection.style.display = (payment === "Online Payment") ? "block" : "none";
+}
+
+function sendToWhatsApp() {
+  const phone1 = "911234567890";  // your main WhatsApp
+  const phone2 = "919876543210";  // optional second WhatsApp
+
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const phone = document.getElementById("phone").value;
+  const address = document.getElementById("address").value;
+  const design = document.getElementById("design").value;
+  const payment = document.getElementById("payment").value;
+
+  const text = 
+`💎 New Jewellery Order 💎
+
+👤 Name: ${name}
+📧 Email: ${email}
+📞 Phone: ${phone}
+🏠 Address: ${address}
+
+💬 Design Details:
+${design}
+
+💰 Payment Method: ${payment}`;
+
+  const encodedText = encodeURIComponent(text);
+  window.open(`https://wa.me/${phone1}?text=${encodedText}`, "_blank");
+  window.open(`https://wa.me/${phone2}?text=${encodedText}`, "_blank");
+}
+</script>
+
 </body>
 </html>
