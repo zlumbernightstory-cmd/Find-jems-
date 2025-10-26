@@ -1,223 +1,64 @@
-body {
-  font-family: "Poppins", sans-serif;
-  background-color: #ffeef4; /* baby pink base */
-  background-image: linear-gradient(
-      rgba(255, 238, 244, 0.92),
-      rgba(255, 238, 244, 0.92)
-    ),
-    url("Findjems-logo-pink.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: fixed;
-  background-size: 55%; /* elegant desktop size */
-  background-blend-mode: lighten;
-  color: #444;
-  margin: 0;
-  padding: 0;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Explore | Find Jems</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
 
-/* 🌸 Responsive logo size for mobile */
-@media (max-width: 768px) {
-  body {
-    background-size: 80%; /* larger on small screens */
-    background-position: center top 20%; /* gently lifted for mobile view */
-  }
-}
+  <!-- 🌸 Navbar -->
+  <div class="navbar">
+    <div class="navbar-left">
+      <img src="Findjems-logo-pink.jpg" alt="Find Jems Logo">
+      <div class="brand">
+        <h2>Find Jems</h2>
+        <p>Beauty • Jewellery • Custom</p>
+      </div>
+    </div>
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+  </div>
 
-@media (max-width: 480px) {
-  body {
-    background-size: 90%; /* full visibility on phones */
-    background-position: center top 15%;
-  }
-}
+  <!-- 🌸 Dropdown Menu -->
+  <div class="dropdown" id="dropdownMenu">
+    <a href="index.html">🏠 Home</a>
+    <a href="explore.html">✨ Explore</a>
+    <a href="order.html">🛍️ Order</a>
+    <a href="about.html">💖 About</a>
+    <a href="contact.html">📞 Contact</a>
+  </div>
 
-.hero p {
-  font-size: 1.1em;
-  margin: 10px 0 20px;
-}
+  <!-- 🌸 Hero Section -->
+  <section class="hero">
+    <h1>Welcome to Find Jems ✨</h1>
+    <p>Explore our unique world of handmade jewellery, beauty, and custom creations — designed to bring out your inner gem 💕</p>
+    
+    <div class="category-buttons">
+      <button class="btn" onclick="window.location.href='shop-jewellery.html'">Shop Jewellery</button>
+      <button class="btn" onclick="window.location.href='shop-beauty.html'">Shop Beauty</button>
+      <button class="btn" onclick="window.location.href='message.html'">Custom Order</button>
+    </div>
+  </section>
 
-.btn {
-  background: #ff4f88;
-  color: #fff;
-  padding: 10px 18px;
-  border-radius: 25px;
-  text-decoration: none;
-  transition: 0.3s;
-}
+  <footer>
+    © 2025 Find Jems — All Rights Reserved 💖
+  </footer>
 
-.btn:hover {
-  background: #ff1e63;
-}
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('dropdownMenu');
+      menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+    }
 
-/* 🌸 Content Section */
-.content {
-  padding: 30px 20px;
-  max-width: 800px;
-  margin: auto;
-  background: #fff;
-  border-radius: 15px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
+    document.addEventListener('click', (e) => {
+      const menu = document.getElementById('dropdownMenu');
+      const icon = document.querySelector('.menu-icon');
+      if (!menu.contains(e.target) && !icon.contains(e.target)) {
+        menu.style.display = 'none';
+      }
+    });
+  </script>
 
-/* 🌸 Form Styles */
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-label {
-  font-weight: bold;
-}
-
-input, select, textarea {
-  padding: 10px;
-  border: 1px solid #ffb6c1;
-  border-radius: 8px;
-  font-size: 1em;
-}
-
-button {
-  background: #ff4f88;
-  color: white;
-  border: none;
-  padding: 10px 16px;
-  border-radius: 25px;
-  font-size: 1em;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-button:hover {
-  background: #ff1e63;
-}
-
-/* 🌸 Featured Section */
-.featured {
-  padding: 40px 20px;
-  text-align: center;
-}
-
-.featured h2 {
-  color: #d63384;
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  margin-bottom: 30px;
-  font-size: 1.8em;
-}
-
-.featured-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 20px;
-  justify-content: center;
-}
-
-.featured-item {
-  background: white;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(255, 182, 193, 0.4);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  position: relative;
-}
-
-.featured-item img {
-  width: 100%;
-  height: 250px;
-  object-fit: cover;
-  transition: opacity 0.3s ease;
-}
-
-.featured-item p {
-  padding: 15px;
-  font-weight: 500;
-  color: #d63384;
-  background: #ffeef5;
-  margin: 0;
-  font-family: "Poppins", sans-serif;
-  font-size: 1.1em;
-}
-
-.featured-item:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 8px 20px rgba(255, 182, 193, 0.6);
-}
-
-.featured-item:hover img {
-  opacity: 0.85;
-}
-
-/* 🌸 Footer */
-footer {
-  text-align: center;
-  background: #ffc0cb;
-  color: white;
-  padding: 15px;
-  margin-top: 40px;
-  border-top: 3px solid #ff7fa8;
-  border-radius: 0 0 10px 10px;
-}
-
-/* 🌸 Order Page Styling */
-.order-section {
-  background-color: #ffe6f2; /* baby pink */
-  padding: 40px;
-  border-radius: 20px;
-  max-width: 500px;
-  margin: 50px auto;
-  box-shadow: 0 4px 12px rgba(255, 182, 193, 0.4);
-  text-align: center;
-}
-
-.order-section h2 {
-  color: #d63384;
-  margin-bottom: 20px;
-  font-family: "Poppins", sans-serif;
-}
-
-.order-section label {
-  display: block;
-  text-align: left;
-  color: #444;
-  font-weight: 500;
-  margin: 10px 0 5px;
-}
-
-.order-section input,
-.order-section textarea {
-  width: 100%;
-  padding: 10px;
-  border: 2px solid #f7c6d9;
-  border-radius: 10px;
-  background-color: #fff;
-  outline: none;
-  resize: none;
-  font-size: 15px;
-}
-
-.order-section input:focus,
-.order-section textarea:focus {
-  border-color: #ff99cc;
-  box-shadow: 0 0 8px rgba(255, 153, 204, 0.4);
-}
-
-.order-section button {
-  background-color: #ff99cc;
-  color: white;
-  border: none;
-  padding: 12px 25px;
-  border-radius: 25px;
-  font-size: 16px;
-  margin-top: 15px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.order-section button:hover {
-  background-color: #ff80bf;
-  transform: scale(1.05);
-}ction button:hover {
-  background-color: #ff80bf;
-  transform: scale(1.05);
-}
+</body>
+</html>
