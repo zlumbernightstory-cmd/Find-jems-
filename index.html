@@ -3,93 +3,65 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Find Jems – Beauty & Elegance</title>
+  <title>Welcome | Find Jems</title>
   <style>
     body {
-      body {
       margin: 0;
       font-family: "Poppins", sans-serif;
       color: #333;
       overflow-x: hidden;
-      background: 
-      linear-gradient(to bottom right, rgba(255, 230, 240, 0.7), rgba(255, 214, 235, 0.7)),
+      background:
+      linear-gradient(to bottom right, rgba(255, 230, 240, 0.85), rgba(255, 214, 235, 0.85)),
       url("findjems-logo-pink.jpg") center/50% no-repeat fixed;
-      background-blend-mode: screen;
-      }
-      margin:      background: url("findjems-logo-pink.jpg") center/contain no-repeat fixed,
-         
+      background-blend-mode: lighten;
     }
 
+    /* 🌸 Navigation Bar (hidden from view but for spacing aesthetic) */
     nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background-color: rgba(255, 255, 255, 0.9);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      z-index: 10;
-      display: flex;
-      justify-content: center;
-      backdrop-filter: blur(5px);
+      height: 60px;
+      background-color: transparent;
     }
 
-    nav ul {
-      list-style: none;
-      margin: 0;
-      padding: 12px 0;
-      display: flex;
-      gap: 25px;
-    }
-
-    nav ul li a {
-      text-decoration: none;
-      color: #d63384;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-
-    nav ul li a:hover {
-      color: #b52d6f;
-    }
-
+    /* 🌸 Hero Section */
     .hero {
-      min-height: 100vh;
+      min-height: calc(100vh - 60px);
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding-top: 60px;
+      padding: 0 20px;
     }
 
     .hero h1 {
       color: #d63384;
       font-size: 2.8em;
-      background: rgba(255, 255, 255, 0.75);
-      padding: 12px 30px;
-      border-radius: 20px;
-      box-shadow: 0 4px 12px rgba(214, 51, 132, 0.15);
+      background: rgba(255, 255, 255, 0.8);
+      padding: 15px 35px;
+      border-radius: 25px;
+      box-shadow: 0 4px 12px rgba(214, 51, 132, 0.2);
+      margin-bottom: 15px;
     }
 
     .hero p {
       font-size: 1.2em;
       color: #555;
-      margin-top: 15px;
       max-width: 480px;
-      background: rgba(255, 255, 255, 0.6);
-      padding: 10px 20px;
+      background: rgba(255, 255, 255, 0.7);
+      padding: 12px 20px;
       border-radius: 15px;
+      margin-bottom: 30px;
     }
 
     .hero a.button {
-      margin-top: 30px;
       display: inline-block;
       background-color: #d63384;
       color: white;
       text-decoration: none;
-      padding: 14px 30px;
-      border-radius: 12px;
+      padding: 14px 36px;
+      border-radius: 30px;
       font-weight: 500;
+      font-size: 1em;
       transition: all 0.3s ease;
       box-shadow: 0 4px 10px rgba(214, 51, 132, 0.3);
     }
@@ -97,57 +69,7 @@
     .hero a.button:hover {
       background-color: #b52d6f;
       transform: scale(1.05);
-    }
-
-    .featured {
-      padding: 80px 20px;
-      text-align: center;
-    }
-
-    .featured h2 {
-      color: #d63384;
-      font-size: 2em;
-      margin-bottom: 30px;
-      background: rgba(255, 255, 255, 0.7);
-      display: inline-block;
-      padding: 8px 20px;
-      border-radius: 12px;
-    }
-
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 25px;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .product {
-      background: rgba(255, 255, 255, 0.85);
-      padding: 20px;
-      border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
-    }
-
-    .product:hover {
-      transform: translateY(-5px);
-    }
-
-    .product img {
-      width: 100%;
-      border-radius: 10px;
-    }
-
-    .product h3 {
-      margin-top: 12px;
-      color: #b52d6f;
-      font-size: 1.1em;
-    }
-
-    .product p {
-      color: #777;
-      font-size: 0.95em;
+      box-shadow: 0 6px 14px rgba(214, 51, 132, 0.4);
     }
 
     footer {
@@ -158,67 +80,29 @@
       background: rgba(255, 255, 255, 0.6);
     }
 
-    @media (max-width: 600px) {
-      .hero h1 {
-        font-size: 2em;
-      }
-      .hero p {
-        font-size: 1em;
-      }
+    /* 🌸 Animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero h1, .hero p, .hero a.button {
+      animation: fadeIn 1s ease forwards;
     }
   </style>
 </head>
 <body>
 
-  <nav>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="jems.html">Jems</a></li>
-      <li><a href="beauty.html">Beauty</a></li>
-      <li><a href="order.html">Order</a></li>
-    </ul>
-  </nav>
+  <nav></nav>
 
   <section class="hero">
     <h1>Welcome to Find Jems ✨</h1>
-    <p>Where beauty meets elegance — discover your shine with us.</p>
-    <a href="jems.html" class="button">Explore Now 🛍️</a>
-  </section>
-
-  <section class="<!-- Featured Picks Section -->
-  <section class="featured" style="text-align: center; padding: 60px 20px; background: rgba(255, 240, 245, 0.9);">
-  <h2 style="color: #d63384; font-size: 1.8em; margin-bottom: 30px;">Our Featured Picks</h2>
-  
-  <div style="display: flex; flex-direction: column; align-items: center; gap: 25px;">
-  
-  <!-- Product 1: Jewellery -->
-  <div style="background: #fff; border-radius: 20px; padding: 20px; width: 90%; max-width: 400px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-  <img src="jewellery-collection.jpg" alt="Jewellery Collection" style="width: 100%; border-radius: 12px; margin-bottom: 15px;">
-  <h3 style="color: #222;">Jewellery Collection</h3>
-  <p style="color: #d63384; font-weight: 600;">Timeless sparkle crafted with love 💎</p>
-  </div>
-  
-  <!-- Product 2: Beauty Products -->
-  <div style="background: #fff; border-radius: 20px; padding: 20px; width: 90%; max-width: 400px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-  <img src="beauty-products.jpg" alt="Beauty Products" style="width: 100%; border-radius: 12px; margin-bottom: 15px;">
-  <h3 style="color: #222;">Beauty Products</h3>
-  <p style="color: #d63384; font-weight: 600;">Glow up with our exclusive beauty range 💄</p>
-  </div>
-  
-  <!-- Product 3: Custom Creations -->
-  <div style="background: #fff; border-radius: 20px; padding: 20px; width: 90%; max-width: 400px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-  <img src="custom-creations.jpg" alt="Custom Creations" style="width: 100%; border-radius: 12px; margin-bottom: 15px;">
-  <h3 style="color: #222;">Custom Creations</h3>
-  <p style="color: #d63384; font-weight: 600;">Your ideas, our craftsmanship 💖</p>
-  </div>
-  
-      </div>
-    </div>
+    <p>Where Beauty Meets Elegance — Discover Handmade Jewellery and Self-care Treasures That Let Your True Sparkle Shine </p>
+    <a href="explore.html" class="button">Explore Now 🛍️</a>
   </section>
 
   <footer>
-    © 2025 Find Jems | All Rights Reserved 🌸
+    © 2025 Find Jems | All Rights Reserved.🌸
   </footer>
 
 </body>
