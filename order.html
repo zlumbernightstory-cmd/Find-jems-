@@ -20,7 +20,7 @@
 
     form {
       max-width: 400px;
-      margin: 0 auto;
+      margin: 20px auto;
       background: white;
       padding: 20px;
       border-radius: 20px;
@@ -30,10 +30,10 @@
     input, textarea, select {
       width: 100%;
       padding: 10px;
-      <div id="qrSection">
       border-radius: 10px;
       border: 1px solid #ccc;
       font-family: "Poppins", sans-serif;
+      margin-bottom: 15px;
     }
 
     button {
@@ -58,7 +58,7 @@
     }
 
     #qrSection img {
-      width: 250px;
+      width: 200px;
       border-radius: 10px;
     }
 
@@ -66,14 +66,15 @@
       color: #777;
       display: block;
       margin-top: 10px;
+      font-size: 13px;
     }
   </style>
 </head>
 <body>
 
   <section class="order-section">
-    <h2>Thankyou For Shopping With Us</h2>
-    <p>Fill in the details below to complete your Order ✨</p>
+    <h2>Thank You for Shopping with Find Jems 💕</h2>
+    <p>Fill in the details below to complete your order ✨</p>
 
     <form id="whatsappOrderForm">
       <label for="name">Full Name</label>
@@ -91,11 +92,8 @@
       <label for="design">If Any Question Ask?</label>
       <textarea id="design" placeholder="Describe your design or customization details" required></textarea>
 
-      <label for="imageUpload">Upload Your order Image</label>
-      <input type="file" id="imageUpload" accept="image/*">
-
       <label for="payment">Payment Method:</label>
-      <select id="payment" name="payment" onchange="toggleQR()" required>
+      <select id="payment" onchange="toggleQR()" required>
         <option value="">-- Select Payment Method --</option>
         <option value="online">Online Payment</option>
         <option value="cod">Cash on Delivery</option>
@@ -103,8 +101,7 @@
 
       <div id="qrSection">
         <h3 style="color:#d63384;">💖 Scan to Pay 💖</h3>
-        <img src="findjems-payment-qr.jpg" alt="Find Jems UPI QR Code" style="width:200px; border-radius:10px;">
-        <p style="margin-top:10px; color:#555;">UPI ID: <b>moalemlalemtur4-2@okicici</b></p>
+        <img src="findjems-payment-qr.jpg" alt="Find Jems UPI QR Code">
         <small>After payment, take a screenshot and attach it in WhatsApp 📸</small>
       </div>
 
@@ -123,32 +120,45 @@
       const name = document.getElementById("name").value.trim();
       const email = document.getElementById("email").value.trim();
       const phone = document.getElementById("phone").value.trim();
-       const address = document.getElementById("address").value.trim();
+      const address = document.getElementById("address").value.trim();
       const design = document.getElementById("design").value.trim();
       const payment = document.getElementById("payment").value;
-      const imageUpload = document.getElementById("imageUpload").value;
 
       if (!name || !email || !phone || !address || !design || !payment) {
         alert("Please fill in all required fields before submitting 💖");
         return;
       }
 
-      const encodedMessage = encodeURIComponent(
-        `🌸 *New  Order from Find Jems My beautiful Larlo gonna make money Yay!* 🌸\n\n` +
-        `👩 Name: ${name}\n` +
-        `📧 Email: ${email}\n` +
-        `📞 Phone: ${phone}\n` +
-        `🏠 Address: ${address}\n` +
-        `🎨 Design Details: ${design}\n` +
-        `💰 Payment Method: ${payment === "online" ? "Online Payment (Paid via UPI)" : "Cash on Delivery"}\n` +
-        `${imageUpload ? "🖼️ Image uploaded: Yes\n" : ""}` +
-        `\n✨ Please confirm my order.`
-      );
+      const whatsappNumber = "919233587954"; // Replace with your WhatsApp number
 
-      const whatsappNumber = "919233587954"; // Replace with your WhatsApp number (with country code, no +)
+      let message =
+        `🌸 *New Order from Find Jems* 🌸\n\n` +
+        `👩 *Name:* ${name}\n` +
+        `📧 *Email:* ${email}\n` +
+        `📞 *Phone:* ${phone}\n` +
+        `🏠 *Address:* ${address}\n` +
+        `🎨 *Design Details:* ${design}\n` +
+        `💰 *Payment Method:* ${payment === "online" ? "Online Payment (Paid via UPI)" : "Cash on Delivery"}\n\n` +
+        `✨ Thank you for your order with *Find Jems*! 💕\n` +
+        `📎 Please attach the image of your ordered product below.`;
+
+      // Extra note if payment is online
+      if (payment === "online") {
+        message += `\n💸 Also attach your payment screenshot for confirmation.`;
+      }
+
+      const encodedMessage = encodeURIComponent(message);
       const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
-
       window.open(whatsappURL, "_blank");
+    }
+  </script>
+
+</body>
+</html>
+  </script>
+
+</body>
+</html>;
     }
   </script>
 

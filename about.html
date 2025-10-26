@@ -1,40 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Find Jems | About</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | Find Jems</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      color: #333;
+      background:
+        linear-gradient(to bottom right, rgba(255, 230, 240, 0.8), rgba(255, 214, 235, 0.8)),
+        url("Findjems-logo-pink.jpg") center center / 60% no-repeat fixed;
+      background-blend-mode: lighten;
+      background-attachment: fixed;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      z-index: 10;
+      display: flex;
+      justify-content: center;
+      backdrop-filter: blur(6px);
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 12px 0;
+      display: flex;
+      gap: 25px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #d63384;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #b52d6f;
+    }
+
+    .about-section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 100px 20px 60px;
+    }
+
+    .about-section h1 {
+      color: #d63384;
+      font-size: 2.4em;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 14px 40px;
+      border-radius: 25px;
+      box-shadow: 0 4px 12px rgba(214, 51, 132, 0.15);
+      margin-bottom: 20px;
+    }
+
+    .about-section p {
+      font-size: 1.1em;
+      color: #555;
+      max-width: 700px;
+      background: rgba(255, 255, 255, 0.7);
+      padding: 20px 30px;
+      border-radius: 15px;
+      line-height: 1.7;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #777;
+      font-size: 0.9em;
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(5px);
+    }
+
+    @media (max-width: 600px) {
+      .about-section h1 {
+        font-size: 1.8em;
+      }
+      .about-section p {
+        font-size: 1em;
+      }
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>Find Jems</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html" class="active">About</a>
-      <a href="order.html">Order</a>
-    </nav>
-  </header>
 
-  <section class="content">
-    <h2>About Us</h2>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="explore.html">Explore</a></li>
+      <li><a href="order.html">Order</a></li>
+      <li><a href="about.html" style="font-weight: 600;">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="about-section">
+    <h1>About Find Jems ✨</h1>
     <p>
-      Welcome to <strong>Find Jems</strong> — your destination for beautiful, custom-made jewellery.
-      Each piece is crafted with care, elegance, and a touch of sparkle to match your unique style.
-    </p>
-    <p>
-      We believe that jewellery should be as special as the person wearing it.
-      That’s why we offer custom designs, allowing you to choose your gemstone,
-      metal, and setting — making every piece truly one of a kind.
-    </p>
-    <p>
-      From delicate pearls to vibrant emeralds, <strong>Find Jems</strong> brings you timeless
-      creations inspired by beauty, confidence, and individuality.
+      Welcome to <strong>Find Jems</strong> — where elegance meets individuality.  
+      Every piece we create tells a story of beauty, confidence, and charm.  
+      From custom jewellery to self-care essentials, we design with love to bring a touch of sparkle to your every day. 💖  
+      <br><br>
+      Find Jems isn’t just a brand — it’s a celebration of self-expression and timeless style.
     </p>
   </section>
 
   <footer>
-    <p>© 2025 Find Jems. All rights reserved.</p>
+    © 2025 Find Jems | All Rights Reserved 🌸
   </footer>
+
 </body>
 </html>

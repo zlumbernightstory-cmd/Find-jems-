@@ -1,58 +1,34 @@
-/* 🌸 General Styles */
 body {
   font-family: "Poppins", sans-serif;
-  background-color: #ffeef4;
+  background-color: #ffeef4; /* baby pink base */
+  background-image: linear-gradient(
+      rgba(255, 238, 244, 0.92),
+      rgba(255, 238, 244, 0.92)
+    ),
+    url("Findjems-logo-pink.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: 55%; /* elegant desktop size */
+  background-blend-mode: lighten;
   color: #444;
   margin: 0;
   padding: 0;
 }
 
-/* 🌸 Header */
-header {
-  background-color: #ffc0cb;
-  color: #fff;
-  text-align: center;
-  padding: 20px 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+/* 🌸 Responsive logo size for mobile */
+@media (max-width: 768px) {
+  body {
+    background-size: 80%; /* larger on small screens */
+    background-position: center top 20%; /* gently lifted for mobile view */
+  }
 }
 
-header h1 {
-  margin: 0;
-  font-size: 2em;
-  letter-spacing: 1px;
-}
-
-/* 🌸 Navigation */
-nav {
-  margin-top: 10px;
-}
-
-nav a {
-  text-decoration: none;
-  color: #fff;
-  background: #ff7fa8;
-  padding: 8px 14px;
-  margin: 0 4px;
-  border-radius: 20px;
-  transition: 0.3s;
-}
-
-nav a:hover, nav a.active {
-  background: #ff4f88;
-}
-
-/* 🌸 Hero Section */
-.hero {
-  text-align: center;
-  padding: 60px 20px;
-  background: #ffd6e0;
-  border-radius: 20px;
-  margin: 20px;
-}
-
-.hero h2 {
-  color: #d6336c;
-  font-size: 1.8em;
+@media (max-width: 480px) {
+  body {
+    background-size: 90%; /* full visibility on phones */
+    background-position: center top 15%;
+  }
 }
 
 .hero p {
@@ -116,6 +92,62 @@ button:hover {
   background: #ff1e63;
 }
 
+/* 🌸 Featured Section */
+.featured {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.featured h2 {
+  color: #d63384;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  margin-bottom: 30px;
+  font-size: 1.8em;
+}
+
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  justify-content: center;
+}
+
+.featured-item {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(255, 182, 193, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.featured-item img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
+}
+
+.featured-item p {
+  padding: 15px;
+  font-weight: 500;
+  color: #d63384;
+  background: #ffeef5;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.1em;
+}
+
+.featured-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(255, 182, 193, 0.6);
+}
+
+.featured-item:hover img {
+  opacity: 0.85;
+}
+
 /* 🌸 Footer */
 footer {
   text-align: center;
@@ -125,4 +157,67 @@ footer {
   margin-top: 40px;
   border-top: 3px solid #ff7fa8;
   border-radius: 0 0 10px 10px;
+}
+
+/* 🌸 Order Page Styling */
+.order-section {
+  background-color: #ffe6f2; /* baby pink */
+  padding: 40px;
+  border-radius: 20px;
+  max-width: 500px;
+  margin: 50px auto;
+  box-shadow: 0 4px 12px rgba(255, 182, 193, 0.4);
+  text-align: center;
+}
+
+.order-section h2 {
+  color: #d63384;
+  margin-bottom: 20px;
+  font-family: "Poppins", sans-serif;
+}
+
+.order-section label {
+  display: block;
+  text-align: left;
+  color: #444;
+  font-weight: 500;
+  margin: 10px 0 5px;
+}
+
+.order-section input,
+.order-section textarea {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #f7c6d9;
+  border-radius: 10px;
+  background-color: #fff;
+  outline: none;
+  resize: none;
+  font-size: 15px;
+}
+
+.order-section input:focus,
+.order-section textarea:focus {
+  border-color: #ff99cc;
+  box-shadow: 0 0 8px rgba(255, 153, 204, 0.4);
+}
+
+.order-section button {
+  background-color: #ff99cc;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 25px;
+  font-size: 16px;
+  margin-top: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.order-section button:hover {
+  background-color: #ff80bf;
+  transform: scale(1.05);
+}ction button:hover {
+  background-color: #ff80bf;
+  transform: scale(1.05);
 }
